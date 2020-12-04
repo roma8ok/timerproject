@@ -1,5 +1,5 @@
 const ROUTES = {
-  test: `/`,
+  test: `/timerproject`,
 };
 
 export default ROUTES;
