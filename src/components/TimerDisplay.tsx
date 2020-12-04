@@ -1,55 +1,28 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
-import { FontFamilies, FontWeight } from '../styles/fonts';
-
-const getHours = (time: Date) => {
-  const hours = time.getHours();
-  return hours < 10 ? `0${hours}` : hours;
-};
-
-const getMinutes = (time: Date) => {
-  const minutes = time.getMinutes();
-  return minutes < 10 ? `0${minutes}` : minutes;
-};
-
-const getSeconds = (time: Date) => {
-  const seconds = time.getSeconds();
-  return seconds < 10 ? `0${seconds}` : seconds;
-};
-
-export enum TimerMode {
-  HMS = 'HMS',
-  HM = 'HM',
-  MS = 'MS',
-}
-
-const getTimer = (mode: TimerMode, time: Date) => {
-  switch (mode) {
-    case TimerMode.HMS:
-      return getHours(time) + ':' + getMinutes(time) + ':' + getSeconds(time);
-    case TimerMode.HM:
-      return getHours(time) + ':' + getMinutes(time);
-    case TimerMode.MS:
-      return getMinutes(time) + ':' + getSeconds(time);
-  }
-};
+import { TimerClock, TimerClockMode } from './TimerClock';
 
 export interface TimerDisplayProps {
-  mode: TimerMode;
+  clockMode: TimerClockMode;
   time: Date;
+  isRunning: boolean;
+  onClick: Function;
 }
 
-export const TimerDisplay: FC<TimerDisplayProps> = ({ mode, time }) => {
+export const TimerDisplay: FC<TimerDisplayProps> = ({ clockMode, time, isRunning, onClick }) => {
   return (
     <Container>
-      {getTimer(mode, time)}
+      <TimerClock mode={clockMode} time={time} />
+
+      <button onClick={() => onClick()}>
+        {isRunning ? 'Pause' : 'Start'}
+      </button>
+
     </Container>
   );
 };
 
 const Container = styled.div`
-  font-family: ${FontFamilies.main};
-  font-weight: ${FontWeight.w300};
-  font-size: 36px;
+  display: flex;
 `;
