@@ -4,6 +4,7 @@ module.exports = {
     '../src/components/**/*.stories.@(tsx|mdx)',
     '../src/layouts/**/*.stories.@(tsx|mdx)',
     '../src/views/**/*.stories.@(tsx|mdx)',
+    '../src/controllers/**/*.stories.@(tsx|mdx)',
   ],
   addons: [
     '@storybook/addon-links',

@@ -1,24 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-import { TimerDisplay, TimerMode } from '../components/TimerDisplay';
+import { TimerController } from '../controllers/TimerController';
 
 export default function TestView() {
-  const [ currentTime, setCurrentTime ] = useState(new Date());
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <>
       <div>Test View</div>
       <br />
+      <TimerController />
       <br />
+      <TimerController />
       <br />
-      <TimerDisplay mode={TimerMode.MS} time={currentTime} />
+      <TimerController />
+      <br />
+      <TimerController />
     </>
   );
 }
