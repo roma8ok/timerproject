@@ -1,7 +1,5 @@
-const test = 'test';
-
 const ROUTES = {
-  test: `/${test}`,
+  test: `/`,
 };
 
 export default ROUTES;
