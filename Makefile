@@ -9,3 +9,6 @@ storybook:
 
 storybook-build:
 	yarn build-storybook
+
+github-pages:
+	yarn run deploy
