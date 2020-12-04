@@ -1,3 +1,1 @@
-enum Colors {}
-
-export default Colors;
+export enum Colors {}
