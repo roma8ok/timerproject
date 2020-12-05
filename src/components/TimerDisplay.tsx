@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
+import { Button } from './Button';
 import { TimerClock, TimerClockMode } from './TimerClock';
 
 export interface TimerDisplayProps {
@@ -15,9 +16,10 @@ export const TimerDisplay: FC<TimerDisplayProps> = ({ clockMode, time, isRunning
     <Container>
       <TimerClock mode={clockMode} time={time} />
 
-      <button onClick={() => onClick()}>
-        {isRunning ? 'Pause' : 'Start'}
-      </button>
+      <Button
+        title={isRunning ? 'Pause' : 'Start'}
+        onClick={() => onClick()}
+      />
 
     </Container>
   );
