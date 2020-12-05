@@ -2,45 +2,42 @@ import React, { FC, useCallback, useEffect, useState } from 'react';
 
 import { TimerClockMode } from '../components/TimerClock';
 import { TimerDisplay } from '../components/TimerDisplay';
+import { TimerModel } from '../models/TimerModel';
 
 export interface TimerControllerProps {
 }
 
 export const TimerController: FC<TimerControllerProps> = () => {
-  const [ passed, setPassed ] = useState(0);
-  const [ segment, setSegment ] = useState(0);
-  const [ isRunning, setIsRunning ] = useState(false);
-  const [ startedTime, setStartedTime ] = useState(new Date());
-
-  const handleOnClick = () => {
-    if (isRunning) {
-      setIsRunning(false);
-      setPassed(passed + segment);
-      setSegment(0);
-    } else {
-      setIsRunning(true);
-      setSegment(0);
-      setStartedTime(new Date());
-    }
-  };
-
-  const interval = useCallback(() => {
-    if (isRunning) {
-      setSegment(new Date().getTime() - startedTime.getTime());
-    }
-  }, [ isRunning, startedTime ]);
-
-  useEffect(() => {
-    const x = setInterval(interval, 1000);
-    return () => clearInterval(x);
-  }, [ interval ]);
-
-  return (
+  const [ timerModel ] = useState(new TimerModel(0));
+  const [ timerDisplay, setTimerDisplay ] = useState(
     <TimerDisplay
       clockMode={TimerClockMode.MS}
-      time={new Date(passed + segment)}
-      isRunning={isRunning}
-      onClick={handleOnClick}
-    />
+      time={timerModel.getAllPassedDate()}
+      isRunning={timerModel.isRunning}
+      onClick={() => timerModel.toggleRunning()}
+    />,
   );
+
+  const render = useCallback(() => {
+    setTimerDisplay(
+      <TimerDisplay
+        clockMode={TimerClockMode.MS}
+        time={timerModel.getAllPassedDate()}
+        isRunning={timerModel.isRunning}
+        onClick={() => timerModel.toggleRunning()}
+      />,
+    );
+  }, [ timerModel ]);
+
+  useEffect(() => {
+    const tempInterval = setInterval(() => {
+      if (timerModel.isRunning) {
+        timerModel.changeSegment(new Date());
+      }
+      render();
+    }, 100);
+    return () => clearInterval(tempInterval);
+  }, [ timerModel, render ]);
+
+  return timerDisplay;
 };

@@ -7,13 +7,11 @@ export default function TestView() {
     <>
       <div>Test View</div>
       <br />
+
       <TimerController />
       <br />
       <TimerController />
       <br />
-      <TimerController />
-      <br />
-      <TimerController />
     </>
   );
 }
