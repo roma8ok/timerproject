@@ -36,25 +36,39 @@ const getTimer = (mode: TimerClockMode, time: Date) => {
   }
 };
 
+export enum TimerClockStyles {
+  faded = 'faded',
+  bright = 'bright',
+}
+
+const STYLES = {
+  faded: { color: Colors.white },
+  bright: { color: Colors.green },
+};
+
 export interface TimerClockProps {
   mode: TimerClockMode;
   time: Date;
+  style?: TimerClockStyles,
 }
 
-export const TimerClock: FC<TimerClockProps> = ({ mode, time }) => {
+export const TimerClock: FC<TimerClockProps> = (
+  { mode, time, style = TimerClockStyles.faded },
+) => {
   return (
-    <Container>
+    <Container color={STYLES[style].color}>
       {getTimer(mode, time)}
     </Container>
   );
 };
 
-const Container = styled.div`
+const Container = styled.div<{ color: string }>`
+  padding: 0 10px;
   font-family: ${FontFamilies.main};
   font-weight: ${FontWeight.w300};
   font-size: 36px;
   background-color: ${Colors.black};
-  color: ${Colors.white};
+  color: ${props => props.color};
   user-select: none;
   text-align: center;
 `;

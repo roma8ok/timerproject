@@ -1,7 +1,7 @@
 {
   "homepage": "https://roma8ok.github.io/timerproject",
   "name": "timerproject",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.8.7",
@@ -15,6 +15,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "@types/jest": "^26.0.15",
+    "@types/lodash": "^4.14.165",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
@@ -23,6 +24,7 @@
     "@types/styled-components": "^5.1.4",
     "babel-loader": "8.1.0",
     "gh-pages": "^3.1.0",
+    "lodash": "^4.17.20",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",

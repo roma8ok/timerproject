@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
 
-import { Button } from './Button';
-import { TimerClock, TimerClockMode } from './TimerClock';
+import { Button, ButtonStyles } from './Button';
+import { TimerClock, TimerClockMode, TimerClockStyles } from './TimerClock';
+import { FontFamilies } from '../styles/fonts';
 
 export interface TimerDisplayProps {
   clockMode: TimerClockMode;
@@ -17,14 +18,19 @@ export const TimerDisplay: FC<TimerDisplayProps> = (
     <div style={{ display: 'inline-block' }}>
 
       <div style={{ display: 'flex' }}>
-        <input style={{ width: '100%' }} />
+        <input style={{ width: '100%', fontFamily: FontFamilies.main }} />
       </div>
 
       <div style={{ display: 'flex' }}>
-        <TimerClock mode={clockMode} time={time} />
+        <TimerClock
+          mode={clockMode}
+          time={time}
+          style={isRunning ? TimerClockStyles.bright : TimerClockStyles.faded}
+        />
 
         <Button
-          title={isRunning ? 'Pause' : 'Start'}
+          title={isRunning ? 'PAUSE' : 'START'}
+          style={isRunning ? ButtonStyles.bright : ButtonStyles.faded}
           fullWidth
           onClick={() => onClick()}
         />

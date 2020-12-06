@@ -17,20 +17,6 @@ HMSStop.args = {
   isRunning: false,
 };
 
-export const HMStop = Template.bind({});
-HMStop.args = {
-  clockMode: TimerClockMode.HM,
-  time: TIME,
-  isRunning: false,
-};
-
-export const MSStop = Template.bind({});
-MSStop.args = {
-  clockMode: TimerClockMode.MS,
-  time: TIME,
-  isRunning: false,
-};
-
 export const HMSRun = Template.bind({});
 HMSRun.args = {
   clockMode: TimerClockMode.HMS,
@@ -38,11 +24,25 @@ HMSRun.args = {
   isRunning: true,
 };
 
+export const HMStop = Template.bind({});
+HMStop.args = {
+  clockMode: TimerClockMode.HM,
+  time: TIME,
+  isRunning: false,
+};
+
 export const HMRun = Template.bind({});
 HMRun.args = {
   clockMode: TimerClockMode.HM,
   time: TIME,
   isRunning: true,
+};
+
+export const MSStop = Template.bind({});
+MSStop.args = {
+  clockMode: TimerClockMode.MS,
+  time: TIME,
+  isRunning: false,
 };
 
 export const MSRun = Template.bind({});
