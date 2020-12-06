@@ -5,17 +5,17 @@ import { Colors } from '../styles/colors';
 import { FontFamilies, FontWeight } from '../styles/fonts';
 
 const getHours = (time: Date) => {
-  const hours = time.getHours();
+  const hours = time.getUTCHours();
   return hours < 10 ? `0${hours}` : hours;
 };
 
 const getMinutes = (time: Date) => {
-  const minutes = time.getMinutes();
+  const minutes = time.getUTCMinutes();
   return minutes < 10 ? `0${minutes}` : minutes;
 };
 
 const getSeconds = (time: Date) => {
-  const seconds = time.getSeconds();
+  const seconds = time.getUTCSeconds();
   return seconds < 10 ? `0${seconds}` : seconds;
 };
 
@@ -50,10 +50,11 @@ export const TimerClock: FC<TimerClockProps> = ({ mode, time }) => {
 };
 
 const Container = styled.div`
-  display: inline;
   font-family: ${FontFamilies.main};
   font-weight: ${FontWeight.w300};
   font-size: 36px;
   background-color: ${Colors.black};
   color: ${Colors.white};
+  user-select: none;
+  text-align: center;
 `;
