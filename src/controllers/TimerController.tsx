@@ -11,7 +11,7 @@ export const TimerController: FC<TimerControllerProps> = () => {
   const [ timerModel ] = useState(new TimerModel(0));
   const [ timerDisplay, setTimerDisplay ] = useState(
     <TimerDisplay
-      clockMode={TimerClockMode.MS}
+      clockMode={TimerClockMode.HMS}
       time={timerModel.getAllPassedDate()}
       isRunning={timerModel.isRunning}
       onClick={() => timerModel.toggleRunning()}
@@ -21,7 +21,7 @@ export const TimerController: FC<TimerControllerProps> = () => {
   const render = useCallback(() => {
     setTimerDisplay(
       <TimerDisplay
-        clockMode={TimerClockMode.MS}
+        clockMode={TimerClockMode.HMS}
         time={timerModel.getAllPassedDate()}
         isRunning={timerModel.isRunning}
         onClick={() => timerModel.toggleRunning()}
