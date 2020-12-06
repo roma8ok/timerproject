@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import styled from 'styled-components';
 
 import { Button } from './Button';
 import { TimerClock, TimerClockMode } from './TimerClock';
@@ -11,20 +10,26 @@ export interface TimerDisplayProps {
   onClick: Function;
 }
 
-export const TimerDisplay: FC<TimerDisplayProps> = ({ clockMode, time, isRunning, onClick }) => {
+export const TimerDisplay: FC<TimerDisplayProps> = (
+  { clockMode, time, isRunning, onClick },
+) => {
   return (
-    <Container>
-      <TimerClock mode={clockMode} time={time} />
+    <div style={{ display: 'inline-block' }}>
 
-      <Button
-        title={isRunning ? 'Pause' : 'Start'}
-        onClick={() => onClick()}
-      />
+      <div style={{ display: 'flex' }}>
+        <input style={{ width: '100%' }} />
+      </div>
 
-    </Container>
+      <div style={{ display: 'flex' }}>
+        <TimerClock mode={clockMode} time={time} />
+
+        <Button
+          title={isRunning ? 'Pause' : 'Start'}
+          fullWidth
+          onClick={() => onClick()}
+        />
+      </div>
+
+    </div>
   );
 };
-
-const Container = styled.div`
-  display: flex;
-`;
