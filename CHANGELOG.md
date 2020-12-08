@@ -1,3 +1,6 @@
+## 0.0.5 - 2020-12-09
+- Changed favicon.
+
 ## 0.0.4 - 2020-12-07
 - Added component Button.
 - Added model TimerModel.
